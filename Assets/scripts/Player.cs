@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed;
+    public float turnSpeed;
     public Camera mainCamera;
 
     CharacterController controller;
@@ -35,7 +36,8 @@ public class Player : MonoBehaviour
         {
             var lookPoint = new Vector3(hitinfo.point.x, transform.position.y, hitinfo.point.z);
             
-            transform.LookAt(lookPoint);
+            //transform.LookAt(lookPoint);
+            transform.SmoothLookAt(lookPoint, turnSpeed);
         }
         
     }
