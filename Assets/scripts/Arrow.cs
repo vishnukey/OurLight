@@ -5,7 +5,9 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     public float speed;
-    public float damage;
+    public float baseDamage;
+    public float villagerDamageBoost;
+    public float damage => baseDamage + villagerDamageBoost * Camp.Instance.villagers;
 
     public float ttl;
 

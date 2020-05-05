@@ -23,6 +23,8 @@ public class Player : Singleton<Player>
         get;
         private set;
     }
+
+    public int arrowCapacity => arrowBaseCapacity + Mathf.FloorToInt(Camp.Instance.villagers * villagerArrowContribution);
 #endregion
 
 #region public_props
@@ -38,6 +40,11 @@ public class Player : Singleton<Player>
     public GameObject arrowPrefab;
 
     public List<GameObject> lights;
+
+    public int arrowBaseCapacity;
+    public float villagerArrowContribution;
+
+    public event System.Action OnDeath;
 #endregion
 
 #region internal
@@ -150,7 +157,7 @@ public class Player : Singleton<Player>
 
     void InteractVillager(GameObject villager)
     {
-        if (wood >= 1){
+        if (arrows < arrowCapacity && wood >= 1 && Camp.Instance.InCamp(transform.position)){
             wood--;
             arrows++;
         }
@@ -158,7 +165,8 @@ public class Player : Singleton<Player>
 
     void Die()
     {
-
+        OnDeath?.Invoke();
+        Time.timeScale = 0;
     }
 #endregion
 

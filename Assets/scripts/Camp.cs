@@ -7,7 +7,10 @@ public class Camp : Singleton<Camp>
     public float radius;
     public float healthPerVillager;
     public float healingFactor => healthPerVillager * villagers;
-    int villagers;
+    public int villagers{
+        get;
+        private set;
+    }
 
     public bool InCamp(Vector3 position)
     {

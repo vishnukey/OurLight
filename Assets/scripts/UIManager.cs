@@ -28,7 +28,7 @@ public class UIManager : Singleton<UIManager>
     void Update()
     {
         arrowsText.text = $"{WOOD_LEADER}{player.wood}";
-        woodText.text = $"{ARROW_LEADER}{player.arrows}";
+        woodText.text = $"{ARROW_LEADER}{player.arrows}/{player.arrowCapacity}";
         torchesText.text = $"{TORCH_LEADER}{player.torches}";
         healthBar.value = (float)player.health / player.max_health;
     }
