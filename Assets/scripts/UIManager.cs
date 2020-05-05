@@ -14,14 +14,16 @@ public class UIManager : Singleton<UIManager>
     public TextMeshProUGUI arrowsText;
     public TextMeshProUGUI woodText;
     public TextMeshProUGUI torchesText;
+    public TextMeshProUGUI deathText;
     public Slider healthBar;
+    public string deathMessage;
 
     public Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Player.Instance.OnDeath += PlayerDeathCB;
     }
 
     // Update is called once per frame
@@ -31,6 +33,12 @@ public class UIManager : Singleton<UIManager>
         woodText.text = $"{ARROW_LEADER}{player.arrows}/{player.arrowCapacity}";
         torchesText.text = $"{TORCH_LEADER}{player.torches}";
         healthBar.value = (float)player.health / player.max_health;
+    }
+
+    void PlayerDeathCB(string reason)
+    {
+        deathText.text = $"{deathMessage}\n{reason}";
+        deathText.gameObject.SetActive(true);
     }
 
 

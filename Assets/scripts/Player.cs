@@ -44,7 +44,7 @@ public class Player : Singleton<Player>
     public int arrowBaseCapacity;
     public float villagerArrowContribution;
 
-    public event System.Action OnDeath;
+    public event System.Action<string> OnDeath;
 #endregion
 
 #region internal
@@ -133,7 +133,7 @@ public class Player : Singleton<Player>
             Instantiate(arrowPrefab, transform.position + transform.forward * 2, transform.rotation);
         }
 
-        if (health <= 0) Die();
+        if (health <= 0) Die("You succumbed to your wounds");
 
         escape:
             return;
@@ -163,10 +163,11 @@ public class Player : Singleton<Player>
         }
     }
 
-    void Die()
+    public void Die(string reason)
     {
-        OnDeath?.Invoke();
+        OnDeath?.Invoke(reason);
         Time.timeScale = 0;
+        Debug.Log($"You died because {reason}");
     }
 #endregion
 
