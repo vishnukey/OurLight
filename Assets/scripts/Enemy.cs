@@ -100,10 +100,10 @@ public class Enemy : MonoBehaviour
     {
         if (target == null){
             Player.Instance.TakeDamage(strength);
+        }else{
+            var villager = target.GetComponent<Villager>();
+            villager?.TakeDamage(strength);
         }
-
-        var villager = target.GetComponent<Villager>();
-        villager?.TakeDamage(strength);
 
         timeSinceLastAttack = 0;
     }
