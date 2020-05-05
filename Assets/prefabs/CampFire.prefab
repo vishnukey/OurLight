@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 89679078467729573}
   - component: {fileID: 89679078467729574}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,9 +105,10 @@ GameObject:
   - component: {fileID: 89679079871750393}
   - component: {fileID: 89679079871750392}
   - component: {fileID: 89679079871750388}
-  m_Layer: 0
+  - component: {fileID: -3372350913544001457}
+  m_Layer: 9
   m_Name: CampFire
-  m_TagString: Untagged
+  m_TagString: Campfire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -248,3 +249,17 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &-3372350913544001457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89679079871750399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0cd99f6aae09512989238d6f5f9a762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 21.94
+  healthPerVillager: 1

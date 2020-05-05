@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class Player : MonoBehaviour
+public class Player : Singleton<Player>
 {
 #region public_readonly
     public int wood {
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
         private set;
     }
 
-    public int health{
+    public float health{
         get;
         private set;
     }
@@ -30,9 +30,14 @@ public class Player : MonoBehaviour
     public float turnSpeed;
     public float reach;
     public Camera mainCamera;
-    public int max_health;
+    public float max_health;
     public LayerMask groundLayer;
     public LayerMask interactionLayer;
+
+    public GameObject torchPrefab;
+    public GameObject arrowPrefab;
+
+    public List<GameObject> lights;
 #endregion
 
 #region internal
@@ -44,7 +49,11 @@ public class Player : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        health = max_health;
+        health = 2 * (max_health / 3);
+
+        torches = 3;
+        wood = 15;
+        arrows = 5;
     }
 
     // Update is called once per frame
@@ -57,6 +66,13 @@ public class Player : MonoBehaviour
         ).normalized;
 
         controller.Move(direction * speed * Time.deltaTime);
+        if (Camp.Instance.InCamp(transform.position)) {
+            lights.ForEach(light => light.SetActive(false));
+            if (health < max_health){
+                health = Mathf.Min(health + Camp.Instance.healingFactor * Time.deltaTime, max_health);
+            }
+        }
+        else lights.ForEach(light => light.SetActive(false));
         
         //Debug.Log(Input.mousePosition);
         //transform.LookAt(new Vector3(Input.mousePosition.x, 0, Input.mousePosition.y));
@@ -78,8 +94,6 @@ public class Player : MonoBehaviour
                 var position = interactionHit.collider.transform.position;
                 var go = interactionHit.collider.gameObject;
                 var sqrDist = Vector3.SqrMagnitude(transform.position - position);
-                Debug.Log($"Interaction hit! Go: {go.name}, Tag: {interaction}, Dist: {sqrDist}, Reach: {reach}, SqrReach: {reach * reach}, CloseEnough? {sqrDist <= reach * reach}");
-
 
                 if (sqrDist > reach * reach) goto escape;
 
@@ -100,10 +114,26 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown("e") && torches > 0)
+        {
+            torches--;
+            Instantiate(torchPrefab, transform.position - transform.forward, Quaternion.identity);
+        }
+
+        if (Input.GetMouseButtonDown(1) && arrows > 0)
+        {   
+            arrows--;
+            Instantiate(arrowPrefab, transform.position + transform.forward * 2, transform.rotation);
+        }
+
+        if (health <= 0) Die();
+
         escape:
             return;
     }
+#endregion
 
+#region Internal_Methods
     void InteractCampfire(GameObject fire)
     {
         if (wood >= 15){
@@ -124,6 +154,18 @@ public class Player : MonoBehaviour
             wood--;
             arrows++;
         }
+    }
+
+    void Die()
+    {
+
+    }
+#endregion
+
+#region Public_Methods
+    public void TakeDamage(float amnt)
+    {
+        health = Mathf.Max(health - amnt, 0);
     }
 #endregion
 }
