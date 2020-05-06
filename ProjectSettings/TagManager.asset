@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Torch
   - Villager
+  - Torcherie
   layers:
   - Default
   - TransparentFX

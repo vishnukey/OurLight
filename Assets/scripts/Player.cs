@@ -115,6 +115,9 @@ public class Player : Singleton<Player>
                     case "Campfire":
                         InteractCampfire(go);
                         break;
+                    case "Torcherie":
+                        InteractTorcherie(go);
+                        break;
                     default:
                         break;
                 }
@@ -142,6 +145,14 @@ public class Player : Singleton<Player>
 
 #region Internal_Methods
     void InteractCampfire(GameObject fire)
+    {
+        var needed = Camp.Instance.maxFuel - Camp.Instance.fuel;
+        var canGive = Mathf.Min(needed, wood);
+        wood -= canGive;
+        Camp.Instance.AddFuel(canGive);
+    }
+
+    void InteractTorcherie(GameObject torcherie)
     {
         if (wood >= 15){
             wood -= 15;

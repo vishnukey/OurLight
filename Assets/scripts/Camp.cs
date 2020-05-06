@@ -20,7 +20,10 @@ public class Camp : Singleton<Camp>
     public List<Light> lights;
 
     float timeSinceLastBurn;
-    int fuel;
+    public int fuel{
+        get;
+        private set;
+    }
     List<(Light, float)> startIntensity;
 
     void Start() {
@@ -66,6 +69,11 @@ public class Camp : Singleton<Camp>
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
+    public void AddFuel(int woodAmnt)
+    {
+        fuel = Mathf.Min(fuel + woodAmnt, maxFuel);
     }
     
 }

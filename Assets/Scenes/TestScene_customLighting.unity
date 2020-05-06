@@ -2455,6 +2455,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7434592452779635974, guid: 8d3dc3c9b2c3a3a3dbd6ecd09873a27e,
         type: 3}
+    - target: {fileID: 1263253391199515744, guid: e9a92aa878c30a12eb504d4ce8649a5f,
+        type: 3}
+      propertyPath: arrowBaseCapacity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263253391199515744, guid: e9a92aa878c30a12eb504d4ce8649a5f,
+        type: 3}
+      propertyPath: villagerArrowContribution
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1263253391199515745, guid: e9a92aa878c30a12eb504d4ce8649a5f,
         type: 3}
       propertyPath: m_Name
@@ -2529,6 +2539,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3176721238404017338, guid: 7a6115fb0e0e0e5d8ad624faf82308f5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176721238404017338, guid: 7a6115fb0e0e0e5d8ad624faf82308f5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4110654094866833153, guid: 7a6115fb0e0e0e5d8ad624faf82308f5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2588,6 +2608,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StartingChunk
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143971954869572675, guid: 7a6115fb0e0e0e5d8ad624faf82308f5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8942003925196183689, guid: 7a6115fb0e0e0e5d8ad624faf82308f5,
         type: 3}
