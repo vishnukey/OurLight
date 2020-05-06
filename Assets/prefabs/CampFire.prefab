@@ -263,3 +263,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 21.94
   healthPerVillager: 1
+  baseMaxFuel: 300
+  burnTimeout: 1
+  villagerFuelContribution: 15
+  lights:
+  - {fileID: 89679079871750388}
+  - {fileID: 89679078467729574}

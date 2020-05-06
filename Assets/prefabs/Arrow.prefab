@@ -207,7 +207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 75
-  damage: 10
+  baseDamage: 10
+  villagerDamageBoost: 1
   ttl: 5
 --- !u!136 &2983105376507650376
 CapsuleCollider:

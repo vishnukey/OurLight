@@ -44,6 +44,10 @@ public class Player : Singleton<Player>
     public int arrowBaseCapacity;
     public float villagerArrowContribution;
 
+    public int arrowCost;
+    public int torchCost;
+    public int treeValue;
+
     public event System.Action<string> OnDeath;
 #endregion
 
@@ -66,13 +70,16 @@ public class Player : Singleton<Player>
     // Update is called once per frame
     void Update()
     {
+
+
         var direction = new Vector3(
             Input.GetAxis("Horizontal"),
-            0,
+            -1,
             Input.GetAxis("Vertical")
         ).normalized;
 
         controller.Move(direction * speed * Time.deltaTime);
+
         if (Camp.Instance.InCamp(transform.position)) {
             lights.ForEach(light => light.SetActive(false));
             if (health < max_health){
@@ -154,8 +161,8 @@ public class Player : Singleton<Player>
 
     void InteractTorcherie(GameObject torcherie)
     {
-        if (wood >= 15){
-            wood -= 15;
+        if (wood >= torchCost){
+            wood -= torchCost;
             torches++;
         }
     }
@@ -163,13 +170,13 @@ public class Player : Singleton<Player>
     void InteractTree(GameObject tree)
     {
         Destroy(tree);
-        wood += 10;
+        wood += treeValue;
     }
 
     void InteractVillager(GameObject villager)
     {
-        if (arrows < arrowCapacity && wood >= 1 && Camp.Instance.InCamp(transform.position)){
-            wood--;
+        if (arrows < arrowCapacity && wood >= arrowCost && Camp.Instance.InCamp(transform.position)){
+            wood -= arrowCost;
             arrows++;
         }
     }

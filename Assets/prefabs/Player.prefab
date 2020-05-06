@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 1263253391199515744}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,7 +223,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   turnSpeed: 10
+  reach: 4
   mainCamera: {fileID: 0}
+  max_health: 100
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  torchPrefab: {fileID: 2072453353238876318, guid: f6328fe7574d43ba3a5208f731743dc2,
+    type: 3}
+  arrowPrefab: {fileID: 7434592452779635974, guid: 8d3dc3c9b2c3a3a3dbd6ecd09873a27e,
+    type: 3}
+  lights: []
+  arrowBaseCapacity: 10
+  villagerArrowContribution: 2
+  arrowCost: 2
+  torchCost: 15
+  treeValue: 10
 --- !u!1001 &899725653878035058
 PrefabInstance:
   m_ObjectHideFlags: 0

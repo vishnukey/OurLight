@@ -25,7 +25,7 @@ public class Villager : MonoBehaviour
     {
         health = max_health;
         agent = GetComponent<NavMeshAgent>();
-        agent.enabled = false;
+        //agent.enabled = false;
         if (Camp.Instance.InCamp(transform.position))
         {
             state = State.Camp;
@@ -44,16 +44,18 @@ public class Villager : MonoBehaviour
                 if (containsPlayer) state = State.Following;
                 break;
             case State.Following:
-                agent.enabled = true;
+                //agent.enabled = true;
                 agent.SetDestination(Player.Instance.transform.position);
                 if (Camp.Instance.InCamp(transform.position)){
                     state = State.Camp;
+                    var toPos = Random.insideUnitCircle * (Camp.Instance.radius - 1);
+                    agent.SetDestination(new Vector3(toPos.x, 0, toPos.y));
                     Camp.Instance.AddVillager();
                 }
                 break;
             case State.Camp:
                 light.SetActive(false);
-                agent.enabled = false;
+                //agent.enabled = false;
                 break;
         }
 
