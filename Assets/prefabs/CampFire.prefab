@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &89679078467729573
 Transform:
@@ -106,12 +106,13 @@ GameObject:
   - component: {fileID: 89679079871750392}
   - component: {fileID: 89679079871750388}
   - component: {fileID: -3372350913544001457}
+  - component: {fileID: 8670740988429860423}
   m_Layer: 9
   m_Name: CampFire
   m_TagString: Campfire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &89679079871750395
 Transform:
@@ -262,10 +263,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 21.94
-  healthPerVillager: 1
-  baseMaxFuel: 300
-  burnTimeout: 1
-  villagerFuelContribution: 15
+  healthPerVillager: 0.4
+  baseMaxFuel: 150
+  burnTimeout: 2
+  villagerFuelContribution: 7
   lights:
   - {fileID: 89679079871750388}
   - {fileID: 89679078467729574}
+--- !u!208 &8670740988429860423
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89679079871750399}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

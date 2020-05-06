@@ -148,6 +148,11 @@ public class Player : Singleton<Player>
         escape:
             return;
     }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, reach);
+    }
 #endregion
 
 #region Internal_Methods

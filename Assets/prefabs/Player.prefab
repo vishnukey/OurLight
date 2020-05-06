@@ -221,9 +221,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18dc00cc0ec5cc9b926af6d38a78839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 12
   turnSpeed: 10
-  reach: 4
+  reach: 3
   mainCamera: {fileID: 0}
   max_health: 100
   groundLayer:
